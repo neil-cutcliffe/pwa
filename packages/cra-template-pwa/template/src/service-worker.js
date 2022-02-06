@@ -11,7 +11,7 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
 
 clientsClaim();
 
@@ -70,3 +70,16 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+// Cache GET requests to WordPress
+
+const wordpressHost = process.env.REACT_APP_WORDPRESS_HOST
+
+registerRoute(
+  ({ url }) => {
+    return `https://${url.host}` === wordpressHost
+  },
+  new NetworkFirst({
+    cacheName: "wordpress-GET",
+  })
+);

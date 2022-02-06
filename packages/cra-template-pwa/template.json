@@ -1,22 +1,28 @@
 {
   "package": {
     "dependencies": {
-      "@testing-library/jest-dom": "^5.11.4",
-      "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
+      "@material-ui/core": "^4.12.3",
+      "@testing-library/jest-dom": "^5.16.1",
+      "@testing-library/react": "^11.2.7",
+      "@testing-library/user-event": "^12.8.3",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-scripts": "5.0.0",
+      "superagent-no-cache": "^0.1.1",
       "web-vitals": "^0.2.4",
-      "workbox-background-sync": "^5.1.3",
-      "workbox-broadcast-update": "^5.1.3",
-      "workbox-cacheable-response": "^5.1.3",
-      "workbox-core": "^5.1.3",
-      "workbox-expiration": "^5.1.3",
-      "workbox-google-analytics": "^5.1.3",
-      "workbox-navigation-preload": "^5.1.3",
-      "workbox-precaching": "^5.1.3",
-      "workbox-range-requests": "^5.1.3",
-      "workbox-routing": "^5.1.3",
-      "workbox-strategies": "^5.1.3",
-      "workbox-streams": "^5.1.3"
+      "workbox-background-sync": "^5.1.4",
+      "workbox-broadcast-update": "^5.1.4",
+      "workbox-cacheable-response": "^5.1.4",
+      "workbox-core": "^5.1.4",
+      "workbox-expiration": "^5.1.4",
+      "workbox-google-analytics": "^5.1.4",
+      "workbox-navigation-preload": "^5.1.4",
+      "workbox-precaching": "^5.1.4",
+      "workbox-range-requests": "^5.1.4",
+      "workbox-routing": "^5.1.4",
+      "workbox-strategies": "^5.1.4",
+      "workbox-streams": "^5.1.4",
+      "wpapi": "file:node-wpapi"
     },
     "eslintConfig": {
       "extends": ["react-app", "react-app/jest"]
