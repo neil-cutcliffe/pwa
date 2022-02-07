@@ -11,9 +11,9 @@ import Grid from '@material-ui/core/Grid';
 
 import './App.css';
 
-console.log('Version 24')
+console.log('Version 25')
 
-const wordpressUrl = process.env.REACT_APP_WORDPRESS_URL
+const wordpressUrl = process.env.REACT_APP_WORDPRESS_WPAPI
 console.log(wordpressUrl)
 
 var WPAPI = require( 'wpapi/browser/wpapi' );
