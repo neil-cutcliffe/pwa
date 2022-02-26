@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ServiceWorkerUpdateListener } from './ServiceWorkerUpdateListener.js'
+import { ServiceWorkerUpdateListener } from './ServiceWorkerUpdateListener.js';
+
+import { Clock } from './Clock.js'
 
 import logo from './logo.svg';
 
@@ -11,9 +13,34 @@ import Grid from '@material-ui/core/Grid';
 
 import './App.css';
 
-console.log('Version 25')
+console.log('Version 27')
+//console.log('window.location.origin: ')
+//console.log(window.location.origin)
+//console.log('window.location.host: ')
+//console.log(window.location.host)
+//console.log('window.location.pathname: ')
+//console.log(window.location.pathname)
+//console.log('window.location.href: ')
+//console.log(window.location.href)
 
-const wordpressUrl = process.env.REACT_APP_WORDPRESS_WPAPI
+const isLocalhost = Boolean(
+  window.location.hostname === 'localhost' ||
+    // [::1] is the IPv6 localhost address.
+    window.location.hostname === '[::1]' ||
+    // 127.0.0.0/8 are considered localhost for IPv4.
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+);
+
+var wordpressUrl = '';
+
+if (isLocalhost) {
+  // Use a wordpress server on a site setup for testing.
+  wordpressUrl = process.env.REACT_APP_WORDPRESS_WPAPI
+} else {
+  // Use the wordpress that served this app
+  wordpressUrl = window.location.href.substr(0,window.location.href.lastIndexOf('/',window.location.href.lastIndexOf('/')-1)) + '/wp-json'
+}
+console.log('WordPress URL: ')
 console.log(wordpressUrl)
 
 var WPAPI = require( 'wpapi/browser/wpapi' );
@@ -59,6 +86,7 @@ const [posts, setWpPosts] = useState([])
         setWpPosts(data)
       }
       console.log('useEffect 3')
+      console.log(process.env.NODE_ENV)
 
       if (process.env.NODE_ENV !== "development") {
         let listener = new ServiceWorkerUpdateListener();
@@ -116,7 +144,10 @@ const [posts, setWpPosts] = useState([])
 
 
     </Grid>
+
+    <Clock />
       
+
       <br />
       <UpdateWaiting updateWaiting={updateWaiting} handleUpdate={handleUpdate}/>
 
